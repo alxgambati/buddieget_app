@@ -1,2 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row landing-top-buffer">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+
+      <div class="landing-top-text">
+        <h2><i>Why you can only have</i></h2>
+        <h2><i>one budget...<br />
+        <br />..when you can a</i></h2>
+      </div>
+      <div class="landing-middle text-right display-4">
+        <h1>BuddieGet!<br />
+        <br /></h1>
+      </div>
+      <div class="landing-bottom">
+        <h5><br />
+        <br />Find the best professionals in your neighboorhood:</h5>
+        <%= link_to 'Find a Buddie!', '#',  class: "btn btn-primary w-100", style: 'width: 200px;margin-top:20px' %>
+      </div>
+    </div>
+     <div class="col-sm-12 col-md-6 col-lg-8 align-middle d-flex flex-wrap align-items-center">
+      <%= image_tag('professions.png') %>
+    </div>
+  </div>
+</div>
