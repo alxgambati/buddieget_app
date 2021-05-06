@@ -1,0 +1,23 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-black">
+    <h1> Look for all services</h1>
+    <h3 class="typed-js"></h3>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">Services</h3>
+    <ul>
+      <li> <%= @services.all %> </li>
+    </ul>
+    <%= link_to 'Create a new service', new_service_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="row">
+    <% @services.each do |service| %>
+      <div class="co-12 colsm-6 col-md-4">
+        <%= link_to service_path(service), class:'text-decoration-none' do %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
