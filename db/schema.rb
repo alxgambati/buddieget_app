@@ -15,6 +15,16 @@ ActiveRecord::Schema.define(version: 2021_05_06_231217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "service_id", null: false
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_orders_on_service_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "category"
     t.string "description"
@@ -42,5 +52,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_231217) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "services"
+  add_foreign_key "orders", "users"
   add_foreign_key "services", "users"
 end
