@@ -6,12 +6,14 @@
       <div class="d-flex">
         <%= image_tag('neutral-avatar.png') %>
         <div class="user-account-info ml-3" style="display:inline-block; align-self:flex-end;">
-          <p>fulano de tal junior</p>
-          <p>fulano@gmail.com</p>
-          <p><i class="fa fa-map-marker-alt"></i>Rio de Janeiro</p>
+          <p><%= "#{current_user.first_name}, #{current_user.last_name}" %></p>
+          <p><%= current_user.email %></p>
+          <% if current_user.city %>
+            <p><i class="fa fa-map-marker-alt"></i><%= current_user.city %></p>
+          <% end %>
         </div>
       </div>
-      <%= link_to 'Edit personal data', edit_user_registration_path,  class: "btn btn-success w-100", style: 'margin-top:15px' %>
+      <%= link_to 'Edit personal data', edit_user_path,  class: "btn btn-success w-100", style: 'margin-top:15px' %>
       <%= link_to 'Delete this account!', registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger w-100", style: 'margin-top:15px' %>
       <%= link_to 'Offer a new service!', '#',  class: "btn btn-primary", style: 'margin-top:50px' %>
     </div>
