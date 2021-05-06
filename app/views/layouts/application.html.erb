@@ -14,7 +14,13 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <% if devise_controller? %>
+      <div class="container devise-controllers col-sm-12 col-md-8 col-lg-6">
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <%= render 'shared/footer' %>
   </body>
 </html>
