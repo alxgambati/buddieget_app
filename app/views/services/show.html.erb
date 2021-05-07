@@ -1,0 +1,16 @@
+<div class="container py-5">
+
+
+<% if service.user %>
+  <%= link_to 'Edit this service', edit_service_path(@service.id),  class: "btn btn-success w-100", style: 'margin-top:15px' %>
+  <%= link_to 'Delete this servise!', service_path(@service.id), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger w-100", style: 'margin-top:15px' %>
+  <% else %>
+<% end %>
+
+<% unless service.user %>
+  <%= link_to 'Request service', order_path(@order), class: "btn btn-primary", style: 'margin-top:50px' %> %>
+  <% else %>
+<% end %>
+
+
+</div>
