@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
+  <div class="service-category my-2 text-center col-sm-12 col-md-6 col-lg-3">
     <%= link_to image_tag('construction.png'), services_path(category: 'construction') %>
     <p>Construction</p>
   </div>
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
+  <div class="service-category my-2 text-center col-sm-12 col-md-6 col-lg-3">
     <%= link_to image_tag('education.png'), services_path(category: 'education') %>
     <p>Education</p>
   </div>
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
+  <div class="service-category my-2 text-center col-sm-12 col-md-6 col-lg-3">
     <%= link_to image_tag('health.png'), services_path(category: 'health') %>
     <p>Health</p>
   </div>
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
+  <div class="service-category my-2 text-center col-sm-12 col-md-6 col-lg-3">
     <%= link_to image_tag('programing.png'), services_path(category: 'programing') %>
     <p>Programing</p>
   </div>
@@ -32,7 +32,7 @@
       <div class="landing-bottom">
         <h5><br />
         <br />Find the best professionals in your neighboorhood:</h5>
-        <%= link_to 'Find a Buddie!', '#',  class: "btn btn-primary w-100", style: 'width: 200px;margin-top:20px' %>
+        <%= link_to 'Find a Buddie!', services_path,  class: "btn btn-primary w-100", style: 'width: 200px;margin-top:20px' %>
       </div>
     </div>
      <div class="col-sm-12 col-md-6 col-lg-8 align-middle d-flex flex-wrap align-items-center">
