@@ -6,7 +6,7 @@
       <div class="d-flex">
         <%= image_tag('neutral-avatar.png') %>
         <div class="user-account-info ml-3" style="display:inline-block; align-self:flex-end;">
-          <p><%= "#{current_user.first_name}, #{current_user.last_name}" %></p>
+          <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
           <p><%= current_user.email %></p>
           <% if current_user.city %>
             <p><i class="fa fa-map-marker-alt"></i><%= current_user.city %></p>
@@ -22,39 +22,86 @@
       <div class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-account">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <%= link_to "Orders", "#", class: "nav-link" %>
+            <%= link_to "Orders", dashboard_path(results_query: 'orders'), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Services Offered", "#", class: "nav-link" %>
+            <%= link_to "Services Offered", dashboard_path(results_query: 'services_offered'), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Services Sold", "#", class: "nav-link" %>
+            <%= link_to "Services Sold", dashboard_path(results_query: 'services_sold'), class: "nav-link" %>
           </li>
         </ul>
       </div>
 
       <div class="dashboard-results dashboard-top-buffer mx-3">
-
-        <div class="dashboard-results-card card">
-          <div class="flex-area d-flex p-3">
-            <div class="principal" style="width:35%">
-              <%= image_tag('neutral-avatar.png') %>
-              <div class="user-account-info mt-3">
-                <p>fulano de tal junior</p>
-                <p>fulano@gmail.com</p>
-                <p><i class="fa fa-map-marker-alt"></i>Rio de Janeiro</p>
+        <% if @results == 'orders' %>
+          <% @orders.each do |order| %>
+          <div class="dashboard-results-card card my-4">
+            <div class="flex-area d-flex p-3">
+              <div class="principal" style="width:35%">
+                <%= image_tag('neutral-avatar.png') %>
+                <div class="user-account-info mt-3">
+                  <p><%= "#{order.service.user.first_name} #{order.service.user.last_name}" %></p>
+                  <p><%= order.service.user.email %></p>
+                  <p><i class="fa fa-map-marker-alt"></i><%= order.service.user.city %></p>
+                </div>
+              </div>
+              <div class="user-account-details ml-3">
+                <p><b><%= order.service.category.capitalize %></b></p>
+                <p><%= order.service.description %></p>
+                <p>Ordered at <%= order.created_at.to_date %></p>
+                <p><b>Contracted at <%= number_to_currency(order.service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
               </div>
             </div>
-            <div class="user-account-deails ml-3">
-              <p><b>PROGRAMING</b></p>
-              <p>To develop a new Pet related Marketplace, using Ruby on Rails and Javascript</p>
-              <p>Ordered at 22-03-2021</p>
-              <p><b>Contracted at US2.500,00</b></p>
+          </div>
+          <% end %>
+        <% elsif @results == 'services_offered' %>
+          <% @services.each do |service| %>
+          <div class="dashboard-results-card card my-4">
+            <div class="flex-area d-flex p-3">
+              <div class="principal" style="width:35%">
+                <%= image_tag('neutral-avatar.png') %>
+                <div class="user-account-info mt-3">
+                  <p><%= "#{service.user.first_name} #{service.user.last_name}" %></p>
+                  <p><%= service.user.email %></p>
+                  <p><i class="fa fa-map-marker-alt"></i><%= service.user.city%></p>
+                </div>
+              </div>
+              <div class="user-account-details ml-3">
+                <p><b><%= service.category.capitalize %></b></p>
+                <p><%= service.description %></p>
+                <p>Offered at <%= service.created_at.to_date %></p>
+                <p><b>Price: <%= number_to_currency(service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
+              </div>
             </div>
           </div>
-        </div>
+          <% end %>
+        <% elsif @results == 'services_sold' %>
+          <% @services.each do |service| %>
+            <% service.orders.each do |order| %>
+              <div class="dashboard-results-card card my-4">
+                <div class="flex-area d-flex p-3">
+                  <div class="principal" style="width:35%">
+                    <%= image_tag('neutral-avatar.png') %>
+                    <div class="user-account-info mt-3">
+                      <p><%= "#{order.user.first_name} #{order.user.last_name}" %></p>
+                      <p><%= order.user.email %></p>
+                      <p><i class="fa fa-map-marker-alt"></i><%= order.user.city%></p>
+                    </div>
+                  </div>
+                  <div class="user-account-details ml-3">
+                    <p><b><%= order.service.category.capitalize %></b></p>
+                    <p><%= order.service.description %></p>
+                    <p>Sold at <%= order.created_at.to_date %></p>
+                    <p><b>Price: <%= number_to_currency(order.service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
 
-      </div>
+       </div>
     </div>
 
   </div>

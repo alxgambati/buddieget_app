@@ -10,7 +10,7 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <%= link_to 'Be a Buddie!', '#',  class: "btn btn-primary", style: 'width: 200px; margin-right: 100px' %>
+    <%= link_to 'Be a Buddie!', new_user_registration_path,  class: "btn btn-primary", style: 'width: 200px; margin-right: 100px' %>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
