@@ -15,7 +15,7 @@
       </div>
       <%= link_to 'Edit personal data', edit_user_path,  class: "btn btn-success w-100", style: 'margin-top:15px' %>
       <%= link_to 'Delete this account!', registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger w-100", style: 'margin-top:15px' %>
-      <%= link_to 'Offer a new service!', '#',  class: "btn btn-primary", style: 'margin-top:50px' %>
+      <%= link_to 'Offer a new service!', new_service_path,  class: "btn btn-primary", style: 'margin-top:50px' %>
     </div>
 
     <div class="col-sm-12 col-md-9 col-lg-8">
