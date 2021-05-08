@@ -8,7 +8,7 @@ class ServicesController < ApplicationController
       @services = Service.all
     end
   end
-  
+
   def new
     @service = Service.new
   end
@@ -35,7 +35,7 @@ class ServicesController < ApplicationController
     @service.destroy
     redirect_to services_path
   end
-  
+
   private
   def set_service
     @service = Service.find(params[:id])

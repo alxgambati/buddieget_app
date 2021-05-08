@@ -3,9 +3,11 @@
 
 .service-category {
   background: white;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 80px;
   padding: 5px;
+
 }
 
 .service-category img {
@@ -15,4 +17,11 @@
 
 .service-category:hover {
   transform: scale(1.05);
+  // @extend .border;
+  // @extend .border-primary;
+  // @extend .rounded;
+}
+
+.service-category-div {
+
 }
