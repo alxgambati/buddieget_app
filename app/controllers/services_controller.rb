@@ -2,7 +2,11 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @services = Service.all
+    if params[:category]
+      @services = Service.where(category: params[:category])
+    else
+      @services = Service.all
+    end
   end
   
   def new

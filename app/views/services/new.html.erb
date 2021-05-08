@@ -4,7 +4,9 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Create a new service</h3>
         <%= simple_form_for @service do |f| %>
-          <%= f.input :category, placeholder: 'Search by category' %>
+          <%= f.input :category, as: :select, collection: %w(construction education health programing), placeholder: 'Select one category' %>
+          <%= f.input :description, placeholder: 'Type a short description about the service' %>
+          <%= f.input :city, as: :select, collection: %w(construction education health programing), placeholder: 'Select one category' %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
       </div>
