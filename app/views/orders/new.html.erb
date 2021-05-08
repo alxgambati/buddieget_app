@@ -3,14 +3,14 @@
     <div class="card-trip card pt-5 order-card">
       <h2 class="text-center">New Order</h2>
       <div class="p-5">
-        <p> @service.category </p>
-        <p> @service.description </p>
-        <p> @service.price </p>
-        <p> <i class="fa fa-map-marker-alt"></i> @service.city </p>
+        <p> <%= @service.category.capitalize %> </p>
+        <p> <%= @service.description %></p>
+        <p> <%= @service.price %></p>
+        <p> <i class="fa fa-map-marker-alt"></i> <%= @service.city %></p>
       </div>
-        <div class="bottom-order pb-4">
-          <%= link_to 'Confirm Service', '#',  class: "btn btn-primary", style: 'margin-top:50px' %>
-        </div>
+      <div class="order-card mb-4">
+        <%= link_to 'Confirm Service', orders_path(service: @service), method: :post, class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 </div>

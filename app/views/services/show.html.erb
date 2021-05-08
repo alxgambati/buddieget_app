@@ -1,16 +1,23 @@
 <div class="container py-5">
-
-
-<% if service.user %>
-  <%= link_to 'Edit this service', edit_service_path(@service.id),  class: "btn btn-success w-100", style: 'margin-top:15px' %>
-  <%= link_to 'Delete this servise!', service_path(@service.id), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger w-100", style: 'margin-top:15px' %>
-  <% else %>
-<% end %>
-
-<% unless service.user %>
-  <%= link_to 'Request service', order_path(@order), class: "btn btn-primary", style: 'margin-top:50px' %> %>
-  <% else %>
-<% end %>
-
-
+  <div class="dashboard-results-card card my-4">
+    <div class="flex-area d-flex p-3">
+      <div class="principal" style="width:35%">
+        <%= image_tag('neutral-avatar.png') %>
+        <div class="user-account-info mt-3">
+          <p><%= "#{@service.user.first_name} #{@service.user.last_name}" %></p>
+          <p><%= @service.user.email %></p>
+          <p><i class="fa fa-map-marker-alt"></i><%= @service.user.city%></p>
+        </div>
+      </div>
+      <div class="user-account-details ml-3">
+        <p><b><%= @service.category.capitalize %></b></p>
+        <p><%= @service.description %></p>
+        <p>Offered at <%= @service.created_at.to_date %></p>
+        <p><b>Price: <%= number_to_currency(@service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= link_to 'Request service', new_orders_path(service: @service), class: "btn btn-primary" %>
+  </div>
 </div>
