@@ -1,20 +1,23 @@
-<div class="row service-category-div">
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
-    <%= link_to image_tag('construction.png'), services_path(category: 'construction') %>
+<div class="row service-category-span d-flex justify-content-center">
+  <span class="px-3">Choose a category for finding the best professionals in your area</span>
+</div>
+<div class="row service-category-div border border-dark">
+  <%= link_to services_path(category: 'construction'), class: "service-category" do %>
+    <%= image_tag('construction.png') %>
     <span>Construction</span>
-  </div>
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
-    <%= link_to image_tag('education.png'), services_path(category: 'education') %>
+  <% end %>
+  <%= link_to services_path(category: 'education'), class: "service-category" do %>
+    <%= image_tag('education.png') %>
     <span>Education</span>
-  </div>
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
-    <%= link_to image_tag('health.png'), services_path(category: 'health') %>
+  <% end %>
+  <%= link_to services_path(category: 'health'), class: "service-category" do %>
+    <%= image_tag('health.png') %>
     <span>Health</span>
-  </div>
-  <div class="service-category text-center col-sm-12 col-md-6 col-lg-3">
-    <%= link_to image_tag('programing.png'), services_path(category: 'programing') %>
+  <% end %>
+  <%= link_to services_path(category: 'programing'), class: "service-category" do %>
+    <%= image_tag('programing.png') %>
     <span>Programing</span>
-  </div>
+  <% end %>
 </div>
 <div class="container">
   <div class="row landing-top-buffer">
@@ -34,8 +37,8 @@
         <%= link_to 'Find a Buddie!', services_path,  class: "btn btn-primary w-100", style: 'width: 200px;margin-top:20px' %>
       </div>
     </div>
-     <div class="col-sm-12 col-md-6 col-lg-8 align-middle d-flex flex-wrap align-items-center">
-      <%= image_tag('professions.png') %>
+     <div class="col-sm-12 col-md-6 col-lg-8 align-middle d-flex flex-wrap align-items-center img-fluid max-width: 100%">
+      <%= image_tag('professions.png')%>
     </div>
   </div>
 </div>
