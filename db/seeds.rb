@@ -19,71 +19,62 @@ puts "Generating seed..."
 
 CATEGORIES = %w(construction education health programing)
 
-User.create(email: "billgates@hotmail.com", first_name: "Bill", last_name: "Gates", city: "Boston", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[1], description:
-    "Computer Classes:  I'll teach you how to begin at your garage and fund a large Enterprise!",
-    price: 1000000, city: User.last.city)
-  Service.create(user_id: User.last.id, category: CATEGORIES[1], description:
-    "Lecture:  How can we surpass a pandemic - Bill and Melinda Gates Foundation experiences.",
-    price: 200000, city: User.last.city)
+User.create(email: "joaopaulo@gmail.com", first_name: "João", last_name: "Paulo", city: "Niterói", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-16.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
+  Service.create(user_id: User.last.id, category: CATEGORIES[0], description:
+    "Solar panel instalation!  Labor and parts included.  Price for 340W panel (2mx1m)",
+    price: 1690, city: User.last.city)
+  Service.create(user_id: User.last.id, category: CATEGORIES[0], description:
+    "Solar panel instalation!  Labor and parts included.  Price for 160W panel (1.5mx0.7m)",
+    price: 990, city: User.last.city)
 
 
-User.create(email: "alberteinstein@ig.com", first_name: "Albert", last_name: "Einstein", city: "Frankfurt", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[1], description:
-    "Lessons: E = MC2 for dummies.  A journey into phisics!",
-    price: 2000, city: User.last.city)
-
-User.create(email: "drauzio@globo.com", first_name: "Drauzio", last_name: "Varella", city: "São Paulo", password: "123456", password_confirmation: "123456")
+User.create(email: "julia@gmail.com", first_name: "Julia", last_name: "Alves", city: "Duque de Caxias", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-32.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
   Service.create(user_id: User.last.id, category: CATEGORIES[2], description:
-    "Hospitalizations in case of covid. I provide adequate treatment.",
+    "Phisioterapy services: arthritis, tendonitis, pulmonary physiotherapy (post-covid), etc. Price per 1 hour session.",
+    price: 150, city: User.last.city)
+
+User.create(email: "enzo@gmail.com", first_name: "Enzo", last_name: "Garibaldi", city: "Rio de Janeiro", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-28.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
+  Service.create(user_id: User.last.id, category: CATEGORIES[1], description:
+    "Photography classes in an outdoor environment for begineers.  Price per 1 hour class.",
+    price: 200, city: User.last.city)
+
+User.create(email: "rafaellima@hotmail.com", first_name: "Rafael", last_name: "Lima", city: "São Gonçalo", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-13.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
+  Service.create(user_id: User.last.id, category: CATEGORIES[3], description:
+    "Ruby on Rails developer. Let me build your Web App Awesomely.  Price per 1 hour work.",
     price: 250, city: User.last.city)
 
-User.create(email: "oscarniemeyer@bol.com", first_name: "Oscar", last_name: "Niemeyer", city: "Brasília", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[1], description:
-    "Lecture: How to prioritize curves in your buildings - a modern approach.",
-    price: 8000, city: User.last.city)
+User.create(email: "lola@hotmail.com", first_name: "Lola", last_name: "Macedo", city: "São João de Meriti", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-17.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
+  Service.create(user_id: User.last.id, category: CATEGORIES[3], description:
+    "Front-end developer:  let me surprise you and make your app that much more much prettier! Price for 1 hour work.",
+    price: 250, city: User.last.city)
 
-User.create(email: "drhouse@universal.com", first_name: "Doctor", last_name: "House", city: "Princeton", password: "123456", password_confirmation: "123456")
+User.create(email: "sebastiao@bol.com", first_name: "Sebastião", last_name: "Lacerda", city: "Queimados", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-30.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
+  Service.create(user_id: User.last.id, category: CATEGORIES[0], description:
+    "Air conditioners instalation.  Labor and parts inclued.   Price per instalation.",
+    price: 350, city: User.last.city)
+
+User.create(email: "carolina@gmail.com", first_name: "Carolina", last_name: "Macedo", city: "Rio de Janeiro", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-22.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
   Service.create(user_id: User.last.id, category: CATEGORIES[2], description:
-    "I provide the resolution of general health problems. Free if the patient agrees to participate in the recording of an episode at Universal Studios.",
-    price: 0, city: User.last.city)
+    "Elderly caregiver. I take care of your relative with all the affection and respect. Price per diary of 12hs.",
+    price: 600, city: User.last.city)
 
-User.create(email: "mariecurie@radio.com", first_name: "Marie", last_name: "Curie", city: "Paris", password: "123456", password_confirmation: "123456")
+User.create(email: "afonso@gmail.com", first_name: "Afonso", last_name: "Coelho", city: "Rio de Janeiro", password: "123456", password_confirmation: "123456")
+  User.last.photo.attach(io: File.open('app/assets/images/avatar/avatar-31.jpeg'), filename: 'avatar.jpeg', content_type: 'image/png')
   Service.create(user_id: User.last.id, category: CATEGORIES[1], description:
-    "Lecture: From Radio to Nobel Prize - A History of one the story of one of the first female scientists",
-    price: 0, city: User.last.city)
+    "Stand comedy classes:  Smile is the best Remedy!  Price for 1 hour class.",
+    price: 150, city: User.last.city)
 
-User.create(email: "imhotep@egypt.com", first_name: "Imhotep", last_name: "", city: "Cairo", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[0], description:
-    "Problems with large buildings and lack of resorces?  don't worry, i build monoliths with just sand and labor at zero cost.",
-    price: 500000, city: User.last.city)
-
-User.create(email: "greys@anatomy.com", first_name: "Meredith", last_name: "Grey", city: "Seattle", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[0], description:
-    "Need an emergency surgery?  Long surgeries?  Count on me and my team.",
-    price: 10000, city: User.last.city)
-
-User.create(email: "isa@le-vagone.com", first_name: "Isabela", last_name: "Madeiras", city: "Rio de Janeiro", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[3], description:
-    "Problems with your App?  I solve it for you with an awesome Front-End!",
-    price: 20000, city: User.last.city)
-
-User.create(email: "luca@le-vagone.com", first_name: "Luca", last_name: "Martinhos", city: "Rio de Janeiro", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[3], description:
-    "Problems with your App?  I solve it for you with a perfect Back-End!",
-    price: 20000, city: User.last.city)
-
-User.create(email: "uira@le-vagone.com", first_name: "Uirà", last_name: "Gravata", city: "Rio de Janeiro", password: "123456", password_confirmation: "123456")
-  Service.create(user_id: User.last.id, category: CATEGORIES[3], description:
-    "Problems with your App?  I solve it for you with a perfect Back-End!",
-    price: 20000, city: User.last.city)
-
-Order.create(user: User.first, service_id: 4, city: User.first.city)
 Order.create(user: User.first, service_id: 8, city: User.first.city)
-Order.create(user: User.first, service_id: 10, city: User.first.city)
-Order.create(user: User.first, service_id: 11, city: User.first.city)
+Order.create(user: User.first, service_id: 4, city: User.first.city)
 
-Order.create(user: User.last, service_id: 1, city: User.last.city)
-Order.create(user: User.last, service_id: 2, city: User.last.city)
+Order.create(user: User.last, service_id: 7, city: User.last.city)
+
 
 puts "End of Seed!"
