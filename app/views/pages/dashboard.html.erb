@@ -12,16 +12,21 @@
         <div class="user-account-info ml-3" style="display:inline-block; align-self:flex-end;">
           <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
           <p><%= current_user.email %></p>
-          <% if current_user.city %>
-            <p><i class="fa fa-map-marker-alt"></i><%= current_user.city %></p>
-          <% end %>
+          <div class="d-flex justify-content-between">
+            <% if current_user.city %>
+              <p><i class="fa fa-map-marker-alt"></i><%= current_user.city %></p>
+            <% end %>
+            <%= link_to edit_user_path do %>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            <%= link_to registration_path(current_user), method: :delete, data: { confirm: "Are you sure?"} do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </div>
         </div>
       </div>
-      <%= link_to 'Edit personal data', edit_user_path,  class: "btn btn-success w-100", style: 'margin-top:15px' %>
-      <%= link_to 'Delete this account!', registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger w-100", style: 'margin-top:15px' %>
       <%= link_to 'Offer a new service!', new_service_path,  class: "btn btn-primary", style: 'margin-top:50px' %>
     </div>
-
     <div class="col-sm-12 col-md-9 col-lg-8">
       <div class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-account">
         <ul class="navbar-nav mr-auto">
