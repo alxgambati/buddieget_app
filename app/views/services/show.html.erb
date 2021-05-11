@@ -20,4 +20,37 @@
   <div>
     <%= link_to 'Request service', new_orders_path(service: @service), class: "btn btn-primary" %>
   </div>
+  <hr class="my-5">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h3>Reviews</h3>
+      <% if @service.reviews.empty? %>
+        <small><em class="text-muted">Be the first one to review this service <i class="fas fa-comments"></i></em></small>
+      <% end %>
+      <% @service.reviews.each do |review| %>
+        <div>
+          <%= review.rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at)%> ago</em></small>
+          <p class="mb-2"><%= review.comment%></p>
+           <p class="mb-2"><%= review.service.user.email%></p>
+          <%# if policy(review).delete? 
+            link_to "Delete this review", delete_review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"
+           end  %>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+     <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Add your review</h5>
+        <%= simple_form_for [ @service, @review ] do |f| %>
+          <%= f.input :comment, placeholder: 'Tell us your review about the service' %>
+          <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { id: 'review_rating' } %>
+          <%= f.submit "Submit review", class:'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
