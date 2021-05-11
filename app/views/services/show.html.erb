@@ -2,7 +2,7 @@
   <div class="dashboard-results-card card my-4">
     <div class="flex-area d-flex p-3">
       <div class="principal" style="width:35%">
-        <%= image_tag('neutral-avatar.png') %>
+        <%= cl_image_tag @service.user.photo.key %>
         <div class="user-account-info mt-3">
           <p><%= "#{@service.user.first_name} #{@service.user.last_name}" %></p>
           <p><%= @service.user.email %></p>
