@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @service = Service.find(params[:service_id])
     @review.service = @service
+    authorize @review
       if @review.save
         redirect_to service_path(@service)
       else
@@ -12,6 +13,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    authorize @review
     @review.destroy
     redirect_to service_path(@service)
   end
