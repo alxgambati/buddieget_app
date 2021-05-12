@@ -101,6 +101,13 @@
 
                 <div class="user-account-button d-flex justify-content-end">
                   <%= link_to 'Show details', service_path(service.id),  class: "btn btn-primary", style: '' %>
+                  <%= link_to service_path(service.id) do %>
+                    <i class="fas fa-pencil-alt ml-4 mr-4"></i>
+                  <% end %>
+                  <%= link_to service_path(service.id), method: :delete, data: { confirm: "Are you sure?"} do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+
                 </div>
               </div>
             </div>
