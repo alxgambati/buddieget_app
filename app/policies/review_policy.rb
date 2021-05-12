@@ -6,10 +6,11 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    record.service.order.user = user
+    true
+    # record.service.order.user = user
   end
 
   def destroy?
-    record.user == user
+    record.service.user == user
   end
 end

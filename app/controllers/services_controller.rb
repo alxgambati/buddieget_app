@@ -7,6 +7,15 @@ class ServicesController < ApplicationController
     else
       @services = policy_scope(Service)
     end
+
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @services.geocoded.map do |service|
+      {
+        lat: service.latitude,
+        lng: service.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { service: service })
+      }
+    end
   end
 
   def new

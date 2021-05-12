@@ -4,7 +4,7 @@
 
     <div class="user-account card p-4 col-sm-12 col-md-3 col-lg-4">
       <div class="d-flex">
-        <% if current_user.photo %>
+        <% if current_user.photo.present? %>
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag('neutral-avatar.png') %>
@@ -55,7 +55,7 @@
                 <% end %>
                 <div class="user-account-info mt-3">
                   <p><%= "#{order.service.user.first_name} #{order.service.user.last_name}" %></p>
-                  <p><%= order.service.user.email %></p> 
+                  <p><%= order.service.user.email %></p>
                   <p><i class="fa fa-map-marker-alt"></i><%= order.service.user.city %></p>
                 </div>
               </div>
