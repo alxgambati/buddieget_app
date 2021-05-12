@@ -3,18 +3,20 @@ class ServicesController < ApplicationController
 
   def index
     if params[:category]
-      @services = Service.where(category: params[:category])
+      @services = policy_scope(Service).where(category: params[:category])
     else
-      @services = Service.all
+      @services = policy_scope(Service)
     end
   end
 
   def new
     @service = Service.new
+    authorize @service
   end
 
   def create
     @service = Service.new(service_params)
+    authorize @service
     @service.user = current_user
     if @service.save
       redirect_to service_path(@service)
@@ -42,6 +44,7 @@ class ServicesController < ApplicationController
   private
   def set_service
     @service = Service.find(params[:id])
+    authorize @service
   end
 
   def service_params
