@@ -55,7 +55,7 @@
                 <% end %>
                 <div class="user-account-info mt-3">
                   <p><%= "#{order.service.user.first_name} #{order.service.user.last_name}" %></p>
-                  <p><%= order.service.user.email %></p>
+                  <p><%= order.service.user.email %></p> 
                   <p><i class="fa fa-map-marker-alt"></i><%= order.service.user.city %></p>
                 </div>
               </div>
@@ -64,6 +64,11 @@
                 <p><%= order.service.description %></p>
                 <p><%= order.created_at.to_date %></p>
                 <p><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
+
+                 <div class="user-account-button d-flex justify-content-end">
+                    <%= link_to 'Show details', service_path(order.service),  class: "btn btn-primary", style: '' %>
+                  </div>
+
               </div>
             </div>
           </div>
