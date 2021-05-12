@@ -1,0 +1,9 @@
+<div class="principal d-flex">
+  <%= cl_image_tag service.user.photo.key, style: "height: 40px; border-radius: 50%"  %>
+  <div class="pl-3">
+    <span><%= "#{service.user.first_name} #{service.user.last_name}" %></span>
+    <p><%= service.user.email %></p>
+  </div>
+</div>
+<p><%= service.description %> <b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
+<%= link_to "Contract me", service_path(service), class: "text-right" %>
