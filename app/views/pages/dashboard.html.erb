@@ -60,16 +60,16 @@
                   <%= image_tag('neutral-avatar.png') %>
                 <% end %>
                 <div class="user-account-info mt-3">
-                  <p><%= "#{order.service.user.first_name} #{order.service.user.last_name}" %></p>
-                  <p><%= order.service.user.email %></p>
-                  <p><i class="fa fa-map-marker-alt"></i><%= order.service.user.city %></p>
+                  <span style="line-height: 1.5;"><%= "#{order.service.user.first_name} #{order.service.user.last_name}" %></span><br />
+                  <span style="line-height: 1.5;"><%= order.service.user.email %></span><br />
+                  <span style="line-height: 1.5;"><i class="fa fa-map-marker-alt"></i><%= order.service.user.city %></span>
                 </div>
               </div>
               <div class="user-account-details ml-3">
-                <p><b><%= order.service.category.capitalize %></b></p>
-                <p><%= order.service.description %></p>
-                <p><%= order.created_at.to_date %></p>
-                <p><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
+                <span><b><%= order.service.category.capitalize %></b></span><br />
+                <span><%= order.service.description %></span><br />
+                <span><%= order.created_at.to_date %></span><br />
+                <span><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></span>
                  <div class="user-account-button d-flex justify-content-end">
                     <%= link_to 'Show details', service_path(order.service),  class: "btn btn-primary", style: '' %>
                   </div>
