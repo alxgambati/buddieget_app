@@ -7,27 +7,18 @@
         <% else %>
           <%= image_tag('neutral-avatar.png') %>
         <% end %>
-        <div class="user-account-info ml-3" style="display:inline-block; align-self:flex-end;">
+        <div class="user-account-info ml-3" style="display:inline-block; align-self:flex-end;width:100%;">
           <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
           <p><%= current_user.email %></p>
-          <div class="d-flex justify-content-between">
-            <% if current_user.city %>
-              <p><i class="fa fa-map-marker-alt"></i><%= current_user.city %></p>
-              <%= link_to edit_user_path do %>
-                <i class="fas fa-pencil-alt"></i>
-              <% end %>
-              <%= link_to registration_path(current_user), method: :delete, data: { confirm: "Are you sure?"} do %>
-                <i class="fa fa-trash"></i>
-              <% end %>
-            <% else%>
-              <div class="d-flex justify-content-start">
-                <%= link_to edit_user_path do %>
-                  <i class="fas fa-pencil-alt mr-4"></i>
-                <% end %>
-                <%= link_to registration_path(current_user), method: :delete, data: { confirm: "Are you sure?"} do %>
-                  <i class="fa fa-trash"></i>
-                <% end %>
-              </div>
+          <% if current_user.city %>
+            <p><i class="fa fa-map-marker-alt"></i><%= current_user.city %></p>
+          <% end %>
+          <div class="user-account-button d-flex justify-content-end">
+            <%= link_to edit_user_path do %>
+              <i class="fas fa-pencil-alt mr-4"></i>
+            <% end %>
+            <%= link_to registration_path(current_user), method: :delete, data: { confirm: "Are you sure?"} do %>
+              <i class="fa fa-trash"></i>
             <% end %>
           </div>
         </div>
@@ -36,14 +27,26 @@
     </div>
     <div class="col-sm-12 col-md-9 col-lg-8">
       <div class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-account">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+        <ul class="navbar-nav mr-auto px-4">
+           <% if @results == 'orders' %>
+            <li class="nav-item active">
+          <% else %>
+            <li class="nav-item">
+          <% end %>
             <%= link_to "Orders", dashboard_path(results_query: 'orders'), class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <% if @results == 'services_offered' %>
+            <li class="nav-item active">
+          <% else %>
+            <li class="nav-item">
+          <% end %>
             <%= link_to "Services Offered", dashboard_path(results_query: 'services_offered'), class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <% if @results == 'services_sold' %>
+            <li class="nav-item active">
+          <% else %>
+            <li class="nav-item">
+          <% end %>
             <%= link_to "Services Sold", dashboard_path(results_query: 'services_sold'), class: "nav-link" %>
           </li>
         </ul>
@@ -60,21 +63,21 @@
                   <%= image_tag('neutral-avatar.png') %>
                 <% end %>
                 <div class="user-account-info mt-3">
-                  <span style="line-height: 1.5;"><%= "#{order.service.user.first_name} #{order.service.user.last_name}" %></span><br />
-                  <span style="line-height: 1.5;"><%= order.service.user.email %></span><br />
-                  <span style="line-height: 1.5;"><i class="fa fa-map-marker-alt"></i><%= order.service.user.city %></span>
+                  <span><%= "#{order.service.user.first_name} #{order.service.user.last_name}" %></span>
+                  <span><%= order.service.user.email %></span>
+                  <span><i class="fa fa-map-marker-alt"></i><%= order.service.user.city %>
                 </div>
               </div>
               <div class="user-account-details ml-3">
-                <span><b><%= order.service.category.capitalize %></b></span><br />
-                <span><%= order.service.description %></span><br />
-                <span><%= order.created_at.to_date %></span><br />
+                <span><b><%= order.service.category.capitalize %></b></span>
+                <span><%= order.service.description %></span>
                 <span><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></span>
+                <span><i>Ordered at: <%= order.created_at.to_date %></i></span>
                  <div class="user-account-button d-flex justify-content-end">
                     <%= link_to service_path(order.service) do %>
                       <i class="fas fa-search-plus px-4 size-icon"></i>
                     <% end %>
-  
+
                     <%= link_to new_service_review_path(order.service.id) do %>
                       <i class="fas fa-comments size-icon"></i>
                     <% end %>
@@ -94,23 +97,25 @@
                   <%= image_tag('neutral-avatar.png') %>
                 <% end %>
                 <div class="user-account-info mt-3">
-                  <p><%= "#{service.user.first_name} #{service.user.last_name}" %></p>
-                  <p><%= service.user.email %></p>
-                  <p><i class="fa fa-map-marker-alt"></i><%= service.user.city%></p>
+                  <span><%= "#{service.user.first_name} #{service.user.last_name}" %></span>
+                  <span><%= service.user.email %></span>
+                  <span><i class="fa fa-map-marker-alt"></i><%= service.user.city%></span>
                 </div>
               </div>
               <div class="user-account-details ml-3">
-                <p><b><%= service.category.capitalize %></b></p>
-                <p><%= service.description %></p>
-                <p><%= service.created_at.to_date %></p>
-                <p><b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
+                <span><b><%= service.category.capitalize %></b></span>
+                <span><%= service.description %></span>
+                <span><b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></span>
+                <span><i>Posted at: <%= service.created_at.to_date %></i></span>
 
                 <div class="user-account-button d-flex justify-content-end">
-                  <%= link_to 'Show details', service_path(service.id),  class: "btn btn-primary", style: '' %>
+                  <%= link_to service_path(service.id) do %>
+                      <i class="fas fa-search-plus size-icon"></i>
+                    <% end %>
                   <%= link_to edit_service_path(service.id) do %>
                     <i class="fas fa-pencil-alt ml-4 mr-4"></i>
                   <% end %>
-                  <%= link_to edit_service_path(service), method: :delete, data: { confirm: "Are you sure?"} do %>
+                  <%= link_to service_path(service), method: :delete, data: { confirm: "Are you sure?"} do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
 
@@ -137,10 +142,10 @@
                     </div>
                   </div>
                   <div class="user-account-details ml-3">
-                    <p><b><%= order.service.category.capitalize %></b></p>
-                    <p><%= order.service.description %></p>
-                    <p><%= order.created_at.to_date %></p>
-                    <p><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
+                    <span><b><%= order.service.category.capitalize %></b></span>
+                    <span><%= order.service.description %></span>
+                    <span><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></span>
+                    <span><i>Sold at: <%= order.created_at.to_date %></i></span>
                   </div>
                 </div>
               </div>

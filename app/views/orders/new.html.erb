@@ -8,7 +8,7 @@
       <div class="p-5">
         <h4><b> <%= @service.category.capitalize %> </b></h4>
         <p> <%= @service.description %></p>
-        <p><b>Price: <%= number_to_currency(@service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
+        <p><b>Price: <%= number_to_currency(@service.price, unit: "RS$", separator: ",", delimiter: ".") %></b></p>
         <p> <i class="fa fa-map-marker-alt"></i> <%= @service.city %></p>
       </div>
       <div class="order-card mb-4">
