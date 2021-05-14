@@ -66,8 +66,15 @@
                 <p><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
 
                  <div class="user-account-button d-flex justify-content-end">
-                    <%= link_to 'Show details', service_path(order.service),  class: "btn btn-primary", style: '' %>
+                    <%= link_to service_path(order.service) do %>
+                      <i class="fas fa-search-plus px-4 size-icon"></i>
+                    <% end %>
+  
+                    <%= link_to new_service_review_path(order.service.id) do %>
+                      <i class="fas fa-comments size-icon"></i>
+                    <% end %>
                   </div>
+                  
 
               </div>
             </div>
