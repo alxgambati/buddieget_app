@@ -1,7 +1,5 @@
 <div class="container">
-
   <div class="row dashboard-top-buffer">
-
     <div class="user-account card p-4 col-sm-12 col-md-3 col-lg-4">
       <div class="d-flex">
         <% if current_user.photo.present? %>
@@ -15,12 +13,21 @@
           <div class="d-flex justify-content-between">
             <% if current_user.city %>
               <p><i class="fa fa-map-marker-alt"></i><%= current_user.city %></p>
-            <% end %>
-            <%= link_to edit_user_path do %>
-              <i class="fas fa-pencil-alt"></i>
-            <% end %>
-            <%= link_to registration_path(current_user), method: :delete, data: { confirm: "Are you sure?"} do %>
-              <i class="fa fa-trash"></i>
+              <%= link_to edit_user_path do %>
+                <i class="fas fa-pencil-alt"></i>
+              <% end %>
+              <%= link_to registration_path(current_user), method: :delete, data: { confirm: "Are you sure?"} do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            <% else%>
+              <div class="d-flex justify-content-start">
+                <%= link_to edit_user_path do %>
+                  <i class="fas fa-pencil-alt mr-4"></i>
+                <% end %>
+                <%= link_to registration_path(current_user), method: :delete, data: { confirm: "Are you sure?"} do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              </div>
             <% end %>
           </div>
         </div>
@@ -41,7 +48,6 @@
           </li>
         </ul>
       </div>
-
       <div class="dashboard-results dashboard-top-buffer mx-3">
         <% if @results == 'orders' %>
           <% @orders.each do |order| %>
@@ -64,7 +70,6 @@
                 <p><%= order.service.description %></p>
                 <p><%= order.created_at.to_date %></p>
                 <p><b><%= number_to_currency(order.service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
-
                  <div class="user-account-button d-flex justify-content-end">
                     <%= link_to service_path(order.service) do %>
                       <i class="fas fa-search-plus px-4 size-icon"></i>
@@ -74,8 +79,11 @@
                       <i class="fas fa-comments size-icon"></i>
                     <% end %>
                   </div>
+<<<<<<< HEAD
                   
 
+=======
+>>>>>>> master
               </div>
             </div>
           </div>
@@ -101,6 +109,17 @@
                 <p><%= service.description %></p>
                 <p><%= service.created_at.to_date %></p>
                 <p><b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
+
+                <div class="user-account-button d-flex justify-content-end">
+                  <%= link_to 'Show details', service_path(service.id),  class: "btn btn-primary", style: '' %>
+                  <%= link_to edit_service_path(service.id) do %>
+                    <i class="fas fa-pencil-alt ml-4 mr-4"></i>
+                  <% end %>
+                  <%= link_to edit_service_path(service), method: :delete, data: { confirm: "Are you sure?"} do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+
+                </div>
               </div>
             </div>
           </div>
@@ -133,9 +152,7 @@
             <% end %>
           <% end %>
         <% end %>
-
        </div>
     </div>
-
   </div>
 </div>

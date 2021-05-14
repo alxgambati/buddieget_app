@@ -1,11 +1,14 @@
 <div class="container">
+
   <div class="row dashboard-top-buffer m-3">
     <div class="card-trip card pt-5 order-card">
-      <h2 class="text-center">New Order</h2>
+      <div class="p-3 mt-0 bg-primary text-white">
+        <h2 class="text-center"><b>New Order</b></h2>
+      </div>
       <div class="p-5">
-        <p> <%= @service.category.capitalize %> </p>
+        <h4><b> <%= @service.category.capitalize %> </b></h4>
         <p> <%= @service.description %></p>
-        <p> <%= @service.price %></p>
+        <p><b>Price: <%= number_to_currency(@service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
         <p> <i class="fa fa-map-marker-alt"></i> <%= @service.city %></p>
       </div>
       <div class="order-card mb-4">
@@ -14,3 +17,6 @@
     </div>
   </div>
 </div>
+
+
+
