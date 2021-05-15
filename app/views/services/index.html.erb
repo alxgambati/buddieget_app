@@ -7,7 +7,11 @@
         <div class="dashboard-results-card card mb-4">
           <div class="flex-area d-flex p-3">
             <div class="principal" style="width:35%">
+<<<<<<< HEAD
+              <%= cl_image_tag service.user.photo.key %>
+=======
               <%= cl_image_tag service.user.photo.key, class: "avatar"  %>
+>>>>>>> master
               <div class="user-account-info mt-3">
                 <span><%= "#{service.user.first_name} #{service.user.last_name}" %></span>
                 <span><%= service.user.email %></span>

@@ -1,11 +1,34 @@
 <div class="container">
-
-  <div class="row dashboard-top-buffer m-3">
-    <div class="card-trip card pt-5 order-card">
-      <div class="p-3 mt-0 bg-primary text-white">
-        <h2 class="text-center"><b>New Order</b></h2>
-      </div>
+  <div class="row dashboard-top-buffer m-1">
+    <div class="card-trip card pt-2 order-card">
       <div class="p-5">
+<<<<<<< HEAD
+        <h2 class="text-center"><b>New Order</b></h2>
+        <hr>
+        <div class="avatar d-flex white mb-3">
+          <% if current_user.photo.present? %>
+            <%= cl_image_tag @service.user.photo.key, style: "width:80; border-radius:50%;" %>
+          <% else %>
+            <%= image_tag('neutral-avatar.png') %>
+          <% end %>
+          <div class="">
+            <h4><b><%= "#{@service.user.first_name} #{@service.user.last_name}" %></b></h4>
+            <p><%= @service.user.email %></p>
+            <p><i class="fa fa-map-marker-alt"></i><%= @service.user.city %></p>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="mt-5">
+            <h5><b> <%= @service.category.capitalize %> </b></h5>
+            <p> <%= @service.description %></p>
+
+            <p><b>Price: <%= number_to_currency(@service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
+          </div>
+        </div>
+        <div class="order-card mb-4 d-flex justify-content-center">
+          <%= link_to 'Confirm Service', orders_path(service: @service), method: :post, class: "btn btn-primary" %>
+        </div>
+=======
         <h4><b> <%= @service.category.capitalize %> </b></h4>
         <p> <%= @service.description %></p>
         <p><b>Price: <%= number_to_currency(@service.price, unit: "RS$", separator: ",", delimiter: ".") %></b></p>
@@ -13,6 +36,7 @@
       </div>
       <div class="order-card mb-4">
         <%= link_to 'Confirm Service', orders_path(service: @service), method: :post, class: "btn btn-primary" %>
+>>>>>>> master
       </div>
     </div>
   </div>
