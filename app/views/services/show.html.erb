@@ -19,7 +19,9 @@
     </div>
   </div>
   <div class="service">
-    <%= link_to 'Request service', new_orders_path(service: @service), class: "btn btn-primary" %>
+    <% if @service.user != current_user %>
+      <%= link_to 'Request service', new_orders_path(service: @service), class: "btn btn-primary" %>
+    <% end %>
   </div>
   <hr class="my-3">
   <div class="row">
