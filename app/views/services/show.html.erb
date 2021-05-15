@@ -13,7 +13,7 @@
       <div class="user-account-details ml-3">
         <p><b><%= @service.category.capitalize %></b></p>
         <p><%= @service.description %></p>
-        <p><b><%= number_to_currency(@service.price, unit: "RS$", separator: ",", delimiter: ".") %></b></p>
+        <p><b><%= number_to_currency(@service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
         <span><i>Posted at: <%= @service.created_at.to_date %></i></span>
       </div>
     </div>
@@ -26,16 +26,18 @@
     <div class="col-12 col-sm-6">
       <h3>Reviews</h3>
       <% if @service.reviews.empty? %>
-        <small><em class="text-muted">Be the first one to review this service <i class="fas fa-comments"></i></em></small>
+        <small><em class="text-muted"> This service has no reviews. <i class="fas fa-comments"></i></em></small>
       <% else %>
         <% @service.reviews.each do |review| %>
           <div>
-            <%= review.rating.times do %>
-              <i class="fas fa-star"></i>
-            <% end %>
+            <%= cl_image_tag review.user.photo.key, class: "avatar"  %>
+            <span class="mb-2"><%= review.user.email %></span>
+            <br>
+              <% review.rating.times do %>
+                <i class="fas fa-star star"></i>
+              <% end %>
             <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at)%> ago</em></small>
             <p class="mb-2"><%= review.comment %></p>
-            <p class="mb-2"><%= review.user.email %></p>
           </div>
           <hr>
         <% end %>

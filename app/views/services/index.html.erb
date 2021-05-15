@@ -18,7 +18,7 @@
               <span><b><%= service.category.capitalize %></b></span>
               <span><%= service.description %></span>
               <div class="user-account-button d-flex justify-content-between">
-                <span><b><%= number_to_currency(service.price, unit: "RS$", separator: ",", delimiter: ".") %></b></span>
+                <span><b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></span>
                 <%= link_to service_path(service.id) do %>
                   <i class="fas fa-search-plus size-icon"></i>
                 <% end %>
