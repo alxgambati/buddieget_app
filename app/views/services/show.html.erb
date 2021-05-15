@@ -1,5 +1,5 @@
 <div class="container py-5">
-  <h5>Service details</h5>
+  <h3><b>Service details</b></h3>
   <div class="dashboard-results-card card my-4">
     <div class="flex-area d-flex p-3">
       <div class="principal" style="width:35%">
@@ -17,16 +17,17 @@
         <span><i>Posted at: <%= @service.created_at.to_date %></i></span>
       </div>
     </div>
+    <div class="service d-flex justify-content-end mr-4 mb-3">
+      <% if @service.user != current_user %>
+        <%= link_to 'Request service', new_orders_path(service: @service), class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-  <div class="service">
-    <% if @service.user != current_user %>
-      <%= link_to 'Request service', new_orders_path(service: @service), class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  
   <hr class="my-3">
   <div class="row">
     <div class="col-12 col-sm-6">
-      <h3>Reviews</h3>
+      <h3><b>Reviews</b></h3>
       <% if @service.reviews.empty? %>
         <small><em class="text-muted"> This service has no reviews. <i class="fas fa-comments"></i></em></small>
       <% else %>
