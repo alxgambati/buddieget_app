@@ -103,26 +103,14 @@
                 </div>
               </div>
               <div class="user-account-details ml-3">
-<<<<<<< HEAD
-                <p><b><%= service.category.capitalize %></b></p>
-                <p><%= service.description %></p>
-                <p><%= service.created_at.to_date %></p>
-                <p><b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
-                <div class="user-account-button d-flex justify-content-end">
-                  <%= link_to service_path(service.id) do %>
-                    <i class="fas fa-search-plus"></i>
-                  <%end%>
-=======
                 <span><b><%= service.category.capitalize %></b></span>
                 <span><%= service.description %></span>
                 <span><b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></span>
                 <span><i>Posted at: <%= service.created_at.to_date %></i></span>
-
                 <div class="user-account-button d-flex justify-content-end">
                   <%= link_to service_path(service.id) do %>
                       <i class="fas fa-search-plus size-icon"></i>
                     <% end %>
->>>>>>> master
                   <%= link_to edit_service_path(service.id) do %>
                     <i class="fas fa-pencil-alt ml-4 mr-4"></i>
                   <% end %>
