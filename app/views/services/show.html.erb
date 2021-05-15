@@ -1,8 +1,9 @@
 <div class="container py-5">
+  <h5>Service details</h5>
   <div class="dashboard-results-card card my-4">
     <div class="flex-area d-flex p-3">
       <div class="principal" style="width:35%">
-        <%= cl_image_tag @service.user.photo.key %>
+        <%= cl_image_tag @service.user.photo.key, class: "avatar" %>
         <div class="user-account-info mt-3">
           <p><%= "#{@service.user.first_name} #{@service.user.last_name}" %></p>
           <p><%= @service.user.email %></p>
@@ -12,31 +13,32 @@
       <div class="user-account-details ml-3">
         <p><b><%= @service.category.capitalize %></b></p>
         <p><%= @service.description %></p>
-        <p>Offered at <%= @service.created_at.to_date %></p>
-        <p><b>Price: <%= number_to_currency(@service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
+        <p><b><%= number_to_currency(@service.price, unit: "RS$", separator: ",", delimiter: ".") %></b></p>
+        <span><i>Posted at: <%= @service.created_at.to_date %></i></span>
       </div>
     </div>
   </div>
   <div class="service">
     <%= link_to 'Request service', new_orders_path(service: @service), class: "btn btn-primary" %>
   </div>
-  <hr class="my-5">
+  <hr class="my-3">
   <div class="row">
     <div class="col-12 col-sm-6">
       <h3>Reviews</h3>
       <% if @service.reviews.empty? %>
         <small><em class="text-muted">Be the first one to review this service <i class="fas fa-comments"></i></em></small>
-      <% end %>
-      <% @service.reviews.each do |review| %>
-        <div>
-          <%= review.rating.times do %>
-            <i class="fas fa-star"></i>
-          <% end %>
-          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at)%> ago</em></small>
-          <p class="mb-2"><%= review.comment %></p>
-           <p class="mb-2"><%= review.user.email %></p>
-        </div>
-        <hr>
+      <% else %>
+        <% @service.reviews.each do |review| %>
+          <div>
+            <%= review.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at)%> ago</em></small>
+            <p class="mb-2"><%= review.comment %></p>
+            <p class="mb-2"><%= review.user.email %></p>
+          </div>
+          <hr>
+        <% end %>
       <% end %>
     </div>
   </div>
