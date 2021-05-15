@@ -4,9 +4,9 @@
       <div class="p-5">
         <h2 class="text-center"><b>New Order</b></h2>
         <hr>
-        <div class="avatar d-flex white mb-3">
+        <div class="d-flex white mb-3">
           <% if current_user.photo.present? %>
-            <%= cl_image_tag @service.user.photo.key, style: "width:80; border-radius:50%;" %>
+            <%= cl_image_tag @service.user.photo.key, style: "width:150px; border-radius:50%;" %>
           <% else %>
             <%= image_tag('neutral-avatar.png') %>
           <% end %>
