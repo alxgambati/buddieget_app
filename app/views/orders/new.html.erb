@@ -10,21 +10,20 @@
           <% else %>
             <%= image_tag('neutral-avatar.png') %>
           <% end %>
-          <div class="ml-4">
+          <div class="ml-4 mt-4">
             <h4><b><%= "#{@service.user.first_name} #{@service.user.last_name}" %></b></h4>
             <p><%= @service.user.email %></p>
-            <p><i class="fa fa-map-marker-alt"></i><%= @service.user.city %></p>
+            <p><i class="fa fa-map-marker-alt mr-1"></i><%= @service.user.city %></p>
           </div>
         </div>
         <div class="card-body ">
-          <div class="mt-5">
+          <div class="mt-0">
             <h5><b> <%= @service.category.capitalize %> </b></h5>
             <p> <%= @service.description %></p>
-
-            <p><b>Price: <%= number_to_currency(@service.price, unit: "US$", separator: ",", delimiter: ".") %></b></p>
+            <p><b>Price: <%= number_to_currency(@service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
           </div>
         </div>
-        <div class="order-card mb-4 d-flex justify-content-center">
+        <div class="order-card mb-2 d-flex justify-content-center">
           <%= link_to 'Confirm Service', orders_path(service: @service), method: :post, class: "btn btn-primary" %>
         </div>
       </div>
