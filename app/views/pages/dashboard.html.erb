@@ -76,7 +76,7 @@
               </div>
             </div>
           </div>
-          <% end %>
+        <% end %>
         <% elsif @results == 'services_offered' %>
           <% @services.each do |service| %>
           <div class="dashboard-results-card card my-4">
@@ -98,7 +98,6 @@
                 <p><%= service.description %></p>
                 <p><%= service.created_at.to_date %></p>
                 <p><b><%= number_to_currency(service.price, unit: "R$", separator: ",", delimiter: ".") %></b></p>
-
                 <div class="user-account-button d-flex justify-content-end">
                   <%= link_to service_path(service.id) do %>
                     <i class="fas fa-search-plus"></i>
@@ -109,7 +108,6 @@
                   <%= link_to edit_service_path(service), method: :delete, data: { confirm: "Are you sure?"} do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
-
                 </div>
               </div>
             </div>
