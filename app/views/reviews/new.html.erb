@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="bg-white rounded p-3">
+    <h5>Add your review</h5>
+    <%= simple_form_for [ @service, @review ] do |f| %>
+      <%= f.input :comment, placeholder: 'Tell us your review about the service' %>
+      <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { id: 'review_rating' } %>
+      <%= f.submit "Submit review", class:'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+      
